@@ -1,3 +1,26 @@
-<app-menu (selectedPage)="changePage($event)" [currentPage]="page" *ngIf="page"></app-menu>
-
-<router-outlet />
+<mat-sidenav-container>
+    <mat-sidenav #sidenav position="end">
+        <app-menu (selectedPage)="changePage($event)" [currentPage]="page" *ngIf="page" (onCloseSidenav)="onClose($event, sidenav)"></app-menu>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar color="primary">
+            <div>CloudCruise</div>
+            <div class="navigation-wrapper">
+                <ul class="navigation-items">
+                    <li><a routerLink="/home">Home</a></li>
+                    <li><a routerLink="/bookings">Bookings</a></li>
+                    <li><a routerLink="/profile">Profile</a></li>
+                    <li><a routerLink="/more">More</a></li>
+                    <li><a routerLink="/login">Login</a></li>
+                    <li><a routerLink="/register">Register</a></li>
+                </ul>
+            </div>
+            <div class="hamburger-menu-wrapper">
+                <button mat-icon-button (click)="onToggleSidenav(sidenav)">
+                    <mat-icon>menu</mat-icon>
+                </button>
+            </div>
+        </mat-toolbar>
+        <router-outlet />
+    </mat-sidenav-content>
+</mat-sidenav-container>
