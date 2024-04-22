@@ -3,7 +3,7 @@ a {
     color: white;
 }
 
-a:hover, a:active {
+a:hover {
     color: lightgray;
 }
 
@@ -16,10 +16,18 @@ a:hover, a:active {
     margin: 0;
 }
 
+.navigation-items a.active {
+    color: black;
+}
+
 @media screen and (max-width: 576px) {
     .navigation-items {
         display: none;
     }
+}
+
+mat-toolbar {
+    background-color:teal;
 }
 
 mat-sidenav {
