@@ -9,7 +9,7 @@ import { filter } from 'rxjs';
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit{
-  page = '';
+  page: string = '';
   routes: Array<string> = [];
 
   constructor(private router: Router) {
