@@ -1,3 +1,62 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$webkert-kotprog-primary-palette: map-merge(mat.$cyan-palette, ( contrast: (100: #150c4a,)));
+$webkert-kotprog-primary: mat.define-palette(
+  $webkert-kotprog-primary-palette,
+  $default: 800,
+  $lighter: 600,
+  $darker: 700,
+  $text: 700
+);
+
+$webkert-kotprog-accent-palette: map-merge(mat.$teal-palette, ( 501: #4d77b6,contrast: (501: white,A100: white,A200: white,)));
+$webkert-kotprog-accent: mat.define-palette(
+  $webkert-kotprog-accent-palette,
+  $default: 501,
+  $lighter: A100,
+  $darker: A200,
+  $text: 600
+);
+
+// The warn palette is optional (defaults to red).
+$webkert-kotprog-warn-palette: map-merge(mat.$pink-palette, ( ));
+$webkert-kotprog-warn: mat.define-palette(
+  $webkert-kotprog-warn-palette,
+  $default: A200,
+  $lighter: 500,
+  $darker: 500,
+  $text: A700
+);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$webkert-kotprog-theme: mat.define-light-theme((
+  color: (
+    primary: $webkert-kotprog-primary,
+    accent: $webkert-kotprog-accent,
+    warn: $webkert-kotprog-warn,
+  ),
+  typography: mat.define-typography-config(),
+  density: 0
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($webkert-kotprog-theme);
+
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
