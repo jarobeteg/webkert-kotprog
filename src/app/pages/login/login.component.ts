@@ -11,7 +11,7 @@ export class LoginComponent {
   password = new FormControl<string>('');
 
   login() {
-    console.log('Username:', this.email.value);
+    console.log('Email:', this.email.value);
     console.log('Password:', this.password.value);
   }
 }

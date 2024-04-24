@@ -1,7 +1,33 @@
+.register-form {
+    max-width: 300px;
+    width: 100%;
+    margin: auto;
+}
+    
+.register-form mat-form-field {
+    width: 100%;
+    margin-bottom: 10px;
+}
+  
+.register-component {
+    height: 100%;
+    align-items: center;
+    margin-top: 10px;
+}
+    
 div {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    height: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+}
+
+button {
+    width: 100%;
+    margin-bottom: 10px;
+}
+  
+a {
+    text-decoration: none;
 }
