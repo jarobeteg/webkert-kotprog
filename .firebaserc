@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "cloudcruise-4bb6a": {
+      "hosting": {
+        "webkert-kotprog": [
+          "cloudcruise-4bb6a"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "cloudcruise-4bb6a"
+  }
+}
