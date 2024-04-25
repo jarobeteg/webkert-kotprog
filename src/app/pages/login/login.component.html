@@ -1,17 +1,20 @@
 <div class="login-component">
   <div class="login-form">
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email" required>
+      </mat-form-field>
+    
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" type="password" formControlName="password" required>
+      </mat-form-field>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Email</mat-label>
-      <input matInput type="email" [formControl]="email" required>
-    </mat-form-field>
-  
-    <mat-form-field appearance="fill">
-      <mat-label>Password</mat-label>
-      <input matInput type="password" type="password" [formControl]="password" required>
-    </mat-form-field>
+      <button mat-raised-button color="primary" type="submit">Login</button>
+      <p>Don't have an account? <a [routerLink]="'/register'">Register now</a></p>
 
-    <button mat-raised-button color="primary" (click)="login()">Login</button>
-    <p>Don't have an account? <a [routerLink]="'/register'">Register now</a></p>
+      <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+    </form>
   </div>
 </div>
