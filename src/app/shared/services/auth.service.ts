@@ -8,17 +8,6 @@ export class AuthService {
 
   constructor(private auth: AngularFireAuth) { }
 
-  getUserId() {
-    this.auth.authState.subscribe(user => {
-      if (user) {
-        const userId = user.uid;
-        console.log('UserId: ', userId);
-      } else {
-        console.log('No user signed in.');
-      }
-    });
-  }
-
   login(email: string, password: string) {
     return this.auth.signInWithEmailAndPassword(email, password);
   }

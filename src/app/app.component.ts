@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
+import { AuthService } from './shared/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,7 @@ export class AppComponent implements OnInit{
   page: string = '';
   routes: Array<string> = [];
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private auth: AuthService) {
 
   }
 
@@ -25,6 +26,10 @@ export class AppComponent implements OnInit{
           this.page = currentPage;
         }
       });
+  }
+
+  logoutUser() {
+    this.auth.logout();
   }
 
   changePage(selectedPage: string) {
