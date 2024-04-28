@@ -1,6 +1,6 @@
 <mat-sidenav-container>
     <mat-sidenav #sidenav position="end">
-        <app-menu (selectedPage)="changePage($event)" [currentPage]="page" *ngIf="page" (onCloseSidenav)="onClose($event, sidenav)"></app-menu>
+        <app-menu (selectedPage)="changePage($event)" [currentPage]="page" *ngIf="page" (onCloseSidenav)="onClose($event, sidenav)" [loggedInUser]="loggedInUser" (onLogout)="logoutUser($event)"></app-menu>
     </mat-sidenav>
     <mat-sidenav-content>
         <mat-toolbar color="primary">
@@ -11,9 +11,9 @@
                     <li><a routerLink="/bookings" routerLinkActive="active">Bookings</a></li>
                     <li><a routerLink="/profile" routerLinkActive="active">Profile</a></li>
                     <li><a routerLink="/more" routerLinkActive="active">More</a></li>
+                    <li *ngIf="!loggedInUser"><a routerLink="/login" routerLinkActive="active">Login</a></li>
+                    <li *ngIf="loggedInUser"><a (click)="logoutUser()" style="cursor: pointer;">Logout</a></li>
                     <li><a routerLink="/register" routerLinkActive="active">Register</a></li>
-                    <li><a routerLink="/login" routerLinkActive="active">Login</a></li>
-                    <li><a (click)="logoutUser()">Logout</a></li>
                 </ul>
             </div>
             <div class="hamburger-menu-wrapper">

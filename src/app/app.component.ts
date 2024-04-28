@@ -12,6 +12,7 @@ import { AuthService } from './shared/services/auth.service';
 export class AppComponent implements OnInit{
   page: string = '';
   routes: Array<string> = [];
+  loggedInUser?: firebase.default.User | null;
 
   constructor(private router: Router, private auth: AuthService) {
 
@@ -26,10 +27,20 @@ export class AppComponent implements OnInit{
           this.page = currentPage;
         }
       });
+      this.auth.isUserLoggedIn().subscribe(user => {
+        console.log(user);
+        this.loggedInUser = user;
+      }, error => {
+        console.error(error);
+      });
   }
 
-  logoutUser() {
-    this.auth.logout();
+  logoutUser(_?: boolean) {
+    this.auth.logout().then(() => {
+      console.log('Logged out user successfully.');
+    }).catch(error => {
+      console.error(error);
+    });
   }
 
   changePage(selectedPage: string) {

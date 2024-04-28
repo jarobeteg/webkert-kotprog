@@ -3,6 +3,7 @@
     <li routerLink="/bookings" routerLinkActive="active-link" (click)="close()">Bookings</li>
     <li routerLink="/profile" routerLinkActive="active-link" (click)="close()">Profile</li>
     <li routerLink="/more" routerLinkActive="active-link" (click)="close()">More</li>
-    <li routerLink="/login" routerLinkActive="active-link" (click)="close()">Login</li>
+    <li *ngIf="!loggedInUser" routerLink="/login" routerLinkActive="active-link" (click)="close()">Login</li>
+    <li *ngIf="loggedInUser" (click)="close(true)">Logout</li>
     <li routerLink="/register" routerLinkActive="active-link" (click)="close()">Register</li>
 </ul>
