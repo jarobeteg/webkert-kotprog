@@ -12,7 +12,7 @@
                     <li><a routerLink="/profile" routerLinkActive="active">Profile</a></li>
                     <li><a routerLink="/more" routerLinkActive="active">More</a></li>
                     <li *ngIf="!loggedInUser"><a routerLink="/login" routerLinkActive="active">Login</a></li>
-                    <li *ngIf="loggedInUser"><a (click)="logoutUser()" style="cursor: pointer;">Logout</a></li>
+                    <li *ngIf="loggedInUser"><a routerLink="/login" (click)="logoutUser()" style="cursor: pointer;">Logout</a></li>
                     <li><a routerLink="/register" routerLinkActive="active">Register</a></li>
                 </ul>
             </div>

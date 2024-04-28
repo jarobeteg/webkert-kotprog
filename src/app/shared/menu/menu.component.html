@@ -4,6 +4,6 @@
     <li routerLink="/profile" routerLinkActive="active-link" (click)="close()">Profile</li>
     <li routerLink="/more" routerLinkActive="active-link" (click)="close()">More</li>
     <li *ngIf="!loggedInUser" routerLink="/login" routerLinkActive="active-link" (click)="close()">Login</li>
-    <li *ngIf="loggedInUser" (click)="close(true)">Logout</li>
+    <li *ngIf="loggedInUser" routerLink="/login" (click)="close(true)">Logout</li>
     <li routerLink="/register" routerLinkActive="active-link" (click)="close()">Register</li>
 </ul>
