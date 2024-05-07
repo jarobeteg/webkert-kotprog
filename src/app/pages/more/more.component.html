@@ -1,3 +1,102 @@
-<div>
-    <h1>More page</h1>
+<div class="add-more-data">
+    <mat-form-field appearance="fill">
+        <mat-select [(ngModel)]="selectedOption" (ngModelChange)="updateSelectedOption($event)">
+            <mat-option value="airline">Add Airline</mat-option>
+            <mat-option value="aircraft">Add Aircraft</mat-option>
+            <mat-option value="flight">Add Flight</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <div class="form-container">
+        <div *ngIf="selectedOption === 'airline'">
+            <form [formGroup]="addAirlineForm" (ngSubmit)="addAirline()">
+                <mat-form-field appearance="fill">
+                    <mat-label>Airline Name</mat-label>
+                    <input matInput type="text" formControlName="name" required>
+                </mat-form-field>
+
+                <button mat-raised-button color="primary" type="submit">Submit</button>
+            </form>
+        </div>
+    
+        <div *ngIf="selectedOption === 'aircraft'">
+            <form [formGroup]="addAircraftForm" (ngSubmit)="addAircraft()">
+                <mat-form-field appearance="fill">
+                    <mat-label>Aircraft Model</mat-label>
+                    <input matInput type="text" formControlName="model" required>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>First Class Seats</mat-label>
+                    <input matInput type="number" formControlName="firstClassSeats" min="1" max="150" required>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Second Class Seats</mat-label>
+                    <input matInput type="number" formControlName="secondClassSeats" min="1" max="500" required>
+                </mat-form-field>
+
+                <button mat-raised-button color="primary" type="submit">Submit</button>
+            </form>
+        </div>
+
+        <div *ngIf="selectedOption === 'flight'">
+            <form [formGroup]="addFlightForm" (ngSubmit)="addFlight()">
+                <mat-form-field appearance="fill">
+                    <mat-label>Departure City</mat-label>
+                    <input matInput type="text" formControlName="departureCity" required>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Destination City</mat-label>
+                    <input matInput type="text" formControlName="destinationCity" required>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Date</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="date" required>
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Departure Time</mat-label>
+                    <mat-hint>HH:MM - AM/PM</mat-hint>
+                    <input matInput type="time" formControlName="departureTime" required>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Arrival Time</mat-label>
+                    <mat-hint>HH:MM - AM/PM</mat-hint>
+                    <input matInput type="time" formControlName="arrivalTime" required>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Aircraft</mat-label>
+                    <mat-select formControlName="aircraft" required>
+                        <mat-option *ngFor="let aircraft of aircraftOptions" [value]="aircraft.aircraftId">{{ aircraft.model }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Airline</mat-label>
+                    <mat-select formControlName="airline" required>
+                        <mat-option *ngFor="let airline of airlineOptions" [value]="airline.airlineId">{{ airline.name }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Price</mat-label>
+                    <input matInput type="number" formControlName="price" min="1" max="2500" required>
+                </mat-form-field>
+
+                <button mat-raised-button color="primary" type="submit">Submit</button>
+            </form>
+        </div>
+        <div *ngIf="successMessage || errorMessage">
+            <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+            <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+        </div>
+    </div>
 </div>
