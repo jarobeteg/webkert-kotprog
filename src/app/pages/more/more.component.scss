@@ -14,13 +14,17 @@ div {
 }
 
 mat-form-field {
-    width: 300px;
+    width: 350px;
 }
 
 .form-container {
     max-width: 300px;
     width: 100%;
     margin: auto;
+}
+
+.form-container mat-form-field {
+    width: 300px;
 }
 
 button {

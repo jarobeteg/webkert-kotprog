@@ -18,4 +18,8 @@ export class AirlineService {
   getAll() {
     return this.afs.collection<Airline>(this.collectionName).valueChanges();
   }
+
+  generateId(): string {
+    return this.afs.createId();
+  }
 }

@@ -75,14 +75,14 @@
                 <mat-form-field appearance="fill">
                     <mat-label>Aircraft</mat-label>
                     <mat-select formControlName="aircraft" required>
-                        <mat-option *ngFor="let aircraft of aircraftOptions" [value]="aircraft.aircraftId">{{ aircraft.model }}</mat-option>
+                        <mat-option *ngFor="let aircraft of aircraftOptions" [value]="aircraft">{{ aircraft.model }}</mat-option>
                     </mat-select>
                 </mat-form-field>
 
                 <mat-form-field appearance="fill">
                     <mat-label>Airline</mat-label>
                     <mat-select formControlName="airline" required>
-                        <mat-option *ngFor="let airline of airlineOptions" [value]="airline.airlineId">{{ airline.name }}</mat-option>
+                        <mat-option *ngFor="let airline of airlineOptions" [value]="airline">{{ airline.name }}</mat-option>
                     </mat-select>
                 </mat-form-field>
 

@@ -45,6 +45,7 @@ errorMessage: string | null = null;
           setTimeout(() => {}, 700);
         }).catch(error => {
           console.error(error);
+          this.errorMessage = 'An error occurred during registration.';
         });
         this.auth.login(email, password).then(() => {
           this.successMessage = 'Logging in user... Redirecting to home page.';
