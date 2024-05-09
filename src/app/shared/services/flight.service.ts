@@ -16,7 +16,7 @@ export class FlightService {
   }
 
   getAll() {
-    return this.afs.collection<Flight>(this.collectionName).valueChanges();
+    return this.afs.collection<Flight>(this.collectionName, ref => ref.orderBy('departureCity')).valueChanges();
   }
 
   generateId(): string {
