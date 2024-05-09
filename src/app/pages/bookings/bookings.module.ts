@@ -3,15 +3,25 @@ import { CommonModule } from '@angular/common';
 
 import { BookingsRoutingModule } from './bookings-routing.module';
 import { BookingsComponent } from './bookings.component';
+import { BookingTableComponent } from './booking-table/booking-table.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
   declarations: [
-    BookingsComponent
+    BookingsComponent,
+    BookingTableComponent,
   ],
   imports: [
     CommonModule,
-    BookingsRoutingModule
+    BookingsRoutingModule,
+    MatTableModule,
+    MatProgressSpinnerModule,
+    MatButtonModule,
+    MatDialogModule
   ]
 })
 export class BookingsModule { }

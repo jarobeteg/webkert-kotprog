@@ -48,9 +48,9 @@ export class HomeComponent implements OnInit {
 
       dialog.afterClosed().subscribe(result => {
         if (result === true) {
-          this.addBooking(flight.flightId, true);
+          this.addBooking(flight, true);
         } else if (result === false) {
-          this.addBooking(flight.flightId, false);
+          this.addBooking(flight, false);
         }
       });
     } else {
@@ -58,11 +58,18 @@ export class HomeComponent implements OnInit {
     }
   }
   
-  addBooking(flightId: string, isFirstClassSeat: boolean) {
+  addBooking(flight: Flight, isFirstClassSeat: boolean) {
     const uid = this.loggedInUser?.uid;
     const booking: Booking = {
       bookingId: this.bookingService.generateId(),
-      flightId: flightId,
+      flight: {
+        arrivalTime: flight.arrivalTime,
+        date: flight.date,
+        departureCity: flight.departureCity,
+        departureTime: flight.departureTime,
+        destinationCity: flight.destinationCity,
+        price: flight.price
+      },
       isFirstClassSeat: isFirstClassSeat,
       userId: uid as string
     }
