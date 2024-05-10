@@ -10,9 +10,10 @@ import { MatTableDataSource } from '@angular/material/table';
 export class BookingTableComponent {
   @Input() bookings: Booking[] = [];
   @Output() bookingDeleted: EventEmitter<Booking> = new EventEmitter<Booking>();
+  @Output() bookingChanged: EventEmitter<Booking> = new EventEmitter<Booking>();
   dataSource: MatTableDataSource<Booking> = new MatTableDataSource();
   displayedColumns: string[] = ['departureCity', 'destinationCity', 'date', 'departureTime', 'arrivalTime',
-    'price', 'isFirstClassSeat', 'deleteBooking'];
+    'price', 'isFirstClassSeat', 'deleteBooking', 'changeBooking'];
 
   constructor() { }
 
@@ -22,5 +23,9 @@ export class BookingTableComponent {
 
   deleteBooking(booking: Booking) {
     this.bookingDeleted.emit(booking);
+  }
+
+  changeBooking(booking: Booking) {
+    this.bookingChanged.emit(booking);
   }
 }

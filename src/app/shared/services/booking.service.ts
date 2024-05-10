@@ -19,6 +19,10 @@ export class BookingService {
     return this.afs.collection<Booking>(this.collectionName, ref => ref.where('userId', '==', uid)).valueChanges();
   }
 
+  update(booking: Booking) {
+    return this.afs.collection<Booking>(this.collectionName).doc(booking.bookingId).set(booking);
+  }
+
   delete(id: string) {
     return this.afs.collection<Booking>(this.collectionName).doc(id).delete();
   }

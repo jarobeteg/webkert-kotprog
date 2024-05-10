@@ -24,3 +24,9 @@
 .mat-elevation-z8 tbody tr:nth-child(even) {
     background-color: #f2f2f2;
 }
+
+button {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

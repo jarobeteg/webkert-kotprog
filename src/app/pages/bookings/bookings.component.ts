@@ -44,4 +44,13 @@ export class BookingsComponent implements OnInit{
         console.error(error);
       });
     }
+
+    changeBooking(booking: Booking) {
+      booking.isFirstClassSeat = !booking.isFirstClassSeat;
+      this.bookingService.update(booking).then(_ => {
+        
+      }).catch(error => {
+        console.error(error);
+      });
+    }
 }

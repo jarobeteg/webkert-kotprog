@@ -1,6 +1,6 @@
 <div *ngIf="loadingComplete; else loading">
     <div *ngIf="bookingOptions.length > 0; else noData">
-      <app-booking-table [bookings]="bookingOptions" (bookingDeleted)="deleteBooking($event)"></app-booking-table>
+      <app-booking-table [bookings]="bookingOptions" (bookingDeleted)="deleteBooking($event)" (bookingChanged)="changeBooking($event)"></app-booking-table>
     </div>
     <ng-template #noData>
       <h1>No bookings found</h1>
