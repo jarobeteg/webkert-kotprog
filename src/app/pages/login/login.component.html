@@ -1,4 +1,4 @@
-<div class="login-component">
+<div class="login-component" *ngIf="!loginStarted; else loading">
   <div class="login-form">
     <form [formGroup]="loginForm" (ngSubmit)="login()">
       <mat-form-field appearance="fill">
@@ -8,7 +8,7 @@
     
       <mat-form-field appearance="fill">
         <mat-label>Password</mat-label>
-        <input matInput type="password" type="password" formControlName="password" required>
+        <input matInput type="password" formControlName="password" required>
       </mat-form-field>
 
       <button mat-raised-button color="primary" type="submit">Login</button>
@@ -18,3 +18,9 @@
     </form>
   </div>
 </div>
+
+<ng-template #loading>
+  <div class="loading-spinner">
+    <mat-spinner diameter="100"></mat-spinner>
+  </div> 
+</ng-template>

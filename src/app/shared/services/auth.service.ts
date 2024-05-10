@@ -20,6 +20,22 @@ export class AuthService {
     return this.auth.user;
   }
 
+  deleteUser() {
+    this.auth.currentUser.then(user => {
+      if(user) {
+        user.delete().then(() => {
+
+        }).catch(error => {
+          console.error(error);
+        });
+      } else {
+        console.error('No user currently signed in!');
+      }
+    }).catch(error => {
+      console.error(error);
+    });
+  }
+
   logout() {
     return this.auth.signOut();
   }

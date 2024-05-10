@@ -1,0 +1,10 @@
+<h3>{{ data.title }}</h3>
+<form [formGroup]="updateForm" (ngSubmit)="usernameUptd()" class="update-form">
+    <mat-form-field appearance="fill">
+        <mat-label>New Username</mat-label>
+        <input matInput type="text" formControlName="newUsername" required>
+    </mat-form-field>
+    <button mat-flat-button color="primary" type="submit">Submit</button>
+</form>
+
+

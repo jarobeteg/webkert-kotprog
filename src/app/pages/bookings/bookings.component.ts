@@ -2,7 +2,6 @@ import { Component, OnInit} from '@angular/core';
 import { AuthService } from '../../shared/services/auth.service';
 import { BookingService } from '../../shared/services/booking.service';
 import { Booking } from '../../shared/models/Booking';
-import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-bookings',
@@ -15,8 +14,7 @@ export class BookingsComponent implements OnInit{
   loadingComplete: boolean = false;
 
   constructor(private auth: AuthService,
-    private bookingService: BookingService,
-    private dialog: MatDialog) { }
+    private bookingService: BookingService,) { }
 
     ngOnInit(): void {
       this.auth.isUserLoggedIn().subscribe(user => {

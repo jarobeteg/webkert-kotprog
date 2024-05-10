@@ -1,7 +1,37 @@
-div {
+.profile-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-info {
+    margin-bottom: 20px;
     text-align: center;
-    height: 100%;
+}
+
+.profile-info div {
+    margin-bottom: 10px;
+}
+
+.profile-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-actions button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.loading-spinner {
+    margin-bottom: 10px;
 }

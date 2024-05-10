@@ -20,6 +20,7 @@ export class RegisterComponent implements OnInit {
 
 successMessage: string | null = null;
 errorMessage: string | null = null;
+registrationStarted: boolean = false;
 
   constructor(private router: Router, private auth: AuthService, private userService: UserService) { }
 
@@ -31,6 +32,7 @@ errorMessage: string | null = null;
 
   register() {
     if (this.registerForm.valid) {
+      this.registrationStarted = true;
       const email = this.registerForm.get('email')?.value as string;
       const password = this.registerForm.get('password')?.value as string;
       const username = this.registerForm.get('username')?.value as string;
@@ -42,20 +44,19 @@ errorMessage: string | null = null;
         };
         this.userService.create(user).then(_ => {
           this.successMessage = 'Profile registered successfully.';
-          setTimeout(() => {}, 700);
         }).catch(error => {
-          console.error(error);
+          this.registrationStarted = false;
           this.errorMessage = 'An error occurred during registration.';
         });
         this.auth.login(email, password).then(() => {
           this.successMessage = 'Logging in user... Redirecting to home page.';
-          setTimeout(() => {
-            this.router.navigate(['/home']); 
-          }, 700);
+          this.router.navigate(['/home']);
         }).catch(loginError => {
+          this.registrationStarted = false;
           this.errorMessage = 'An error occurred while logging in after registration.';
         });
       }).catch(error => {
+        this.registrationStarted = false;
         let errorMessage = 'An error occurred during registration.';
 
         if (error.code) {
@@ -75,8 +76,10 @@ errorMessage: string | null = null;
         this.errorMessage = errorMessage;
       });
     } else if (this.registerForm.errors?.['passwordMismatch']) {
+      this.registrationStarted = false;
       this.errorMessage = 'The passwords do not match.';
     } else {
+      this.registrationStarted = false;
       this.errorMessage = 'Please fill in all required fields correctly.';
     }
   }

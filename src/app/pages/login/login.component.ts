@@ -15,16 +15,19 @@ export class LoginComponent {
   });
 
   errorMessage: string | null = null;
+  loginStarted: boolean = false;
 
   constructor(private router: Router, private authService: AuthService) { }
 
   async login() {
     if (this.loginForm.valid) {
+      this.loginStarted = true;
       const email = this.loginForm.get('email')?.value as string;
       const password = this.loginForm.get('password')?.value as string;
       this.authService.login(email, password).then(cred => {
         this.router.navigateByUrl('/home');
       }).catch(error => {
+        this.loginStarted = false;
         let errorMessage = 'An error occurred during login.';
 
         if (error.code) {
@@ -50,6 +53,7 @@ export class LoginComponent {
         this.errorMessage = errorMessage;
       });
     } else {
+      this.loginStarted = false;
       this.errorMessage = 'Please fill in all required fields correctly.';
     }
   }

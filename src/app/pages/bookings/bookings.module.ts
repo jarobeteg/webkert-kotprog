@@ -8,12 +8,13 @@ import { MatTableModule } from '@angular/material/table';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
+import { PipeModule } from '../../shared/pipes/pipe.module';
 
 
 @NgModule({
   declarations: [
     BookingsComponent,
-    BookingTableComponent,
+    BookingTableComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +22,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatTableModule,
     MatProgressSpinnerModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    PipeModule
   ]
 })
 export class BookingsModule { }

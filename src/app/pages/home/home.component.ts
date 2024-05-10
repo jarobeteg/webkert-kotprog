@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit {
     if (this.loggedInUser) {
       const dialog = this.dialog.open(FlightDialogComponent, {
         data: {
-          title: 'Select your seat type to book!',
+          title: 'Select your seat type to book!'
         }
       });
 
